@@ -1,0 +1,14 @@
+{
+  "name": "ai-dlc-extensions-demo",
+  "version": "1.0.0",
+  "description": "Minimal Node.js Express API generated with AI-DLC.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

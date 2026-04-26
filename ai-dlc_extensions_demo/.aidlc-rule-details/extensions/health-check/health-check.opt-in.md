@@ -16,3 +16,12 @@ X) Other (please describe after [Answer]: tag below)
 
 [Answer]: 
 ```
+
+## Re-Offer and Revalidation Requirement
+
+When an AI-DLC project already has extension configuration, the Health Check extension MUST still be checked on every interaction and phase that discovers, designs, modifies, generates, documents, or tests API routes.
+
+- If Health Check is already enabled in `aidlc-docs/aidlc-state.md`, do not ask the opt-in question again; load and enforce `health-check.md`.
+- If Health Check is disabled, skip enforcement and log the skip in `aidlc-docs/audit.md`.
+- If no extension configuration exists and the current interaction touches API routes, offer this opt-in prompt during the active Requirements Analysis or equivalent lightweight increment planning gate.
+- Existing source code is in scope. Enabled Health Check rules can require fixes to pre-existing API route groups before the current stage is considered complete.

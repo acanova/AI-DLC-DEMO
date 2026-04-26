@@ -2,11 +2,13 @@
 
 ## Overview
 
-These health-check rules are cross-cutting constraints that apply to API discovery, API design, code generation, and build/test planning for existing, modified, and newly created API routes.
+These health-check rules are cross-cutting constraints that apply to every AI-DLC interaction and phase that discovers, designs, modifies, generates, documents, or tests API routes, including existing, modified, and newly created routes.
 
 The goal is to ensure every API route group has a lightweight, reliable health endpoint that can be used by developers, monitors, load balancers, deployment checks, and incident responders.
 
-**Enforcement**: At each applicable stage, the model MUST verify compliance with these rules before presenting the stage completion message to the user.
+**Enforcement**: At each applicable interaction or stage, the model MUST verify compliance with these rules before presenting the stage completion message to the user.
+
+When the Health Check extension is enabled in `aidlc-docs/aidlc-state.md`, the model MUST load this rules file and enforce it even for lightweight increments, resumed projects, brownfield code changes, documentation-only API changes, and Build and Test updates. The extension is not limited to initial Requirements Analysis.
 
 ### Blocking Health Check Finding Behavior
 
@@ -59,6 +61,7 @@ The health endpoint MUST:
 - Use the same route group prefix as the API it checks
 - Use the HTTP `GET` method
 - Return a successful status code when the route group is operational
+- Literally evaluate the corresponding API route group's operational contract, not merely return a static health payload
 - Avoid mutating state
 - Avoid requiring request body content
 
@@ -67,6 +70,7 @@ The health endpoint MUST:
 - Brownfield projects inventory existing API route groups before compliance is marked complete
 - No existing, modified, or newly created route group is accepted without a health endpoint
 - Health endpoints are registered in the same routing framework as the related API routes
+- Health endpoint tests prove the health response is tied to the corresponding API endpoint or route contract
 - Health endpoints are included in API documentation when API documentation is generated
 
 ---
